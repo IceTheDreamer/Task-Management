@@ -22,7 +22,6 @@ function TasksLists(props) {
             setDragging(true)
         }, 0)
     }
-
     const handleDragEnter = (e, params) => {
       console.log('Entering drag...', params)
       const currentItem = dragItem.current;
@@ -36,7 +35,6 @@ function TasksLists(props) {
         })
       }
     }
-
     const handleDragEnd = () => {
         savingDragged(dragItem.current)
         console.log('Ending drag...', dragItem.current.item)

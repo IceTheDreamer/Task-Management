@@ -250,6 +250,7 @@
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;
+  overflow: scroll;
 }
 .TasksLists .task-dnd-item{
   background-color: #f5f5f5;
