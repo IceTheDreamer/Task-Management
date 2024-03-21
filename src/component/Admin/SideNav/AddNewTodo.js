@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Modal from './Modal'
-import TodoForm from './TodoFrom';
+import TodoForm from '../TodoFrom';
 
 function AddNewTodo() {
   const [showModal, setShowModal] = useState(false)

@@ -90,6 +90,19 @@
 .Employee .Header .User{
   width: 300px;
 }
+.Employee .Header .logout-btn{
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    right: 0;
+    height: 80px;
+    width: 50px;
+    padding: 10px;
+    border-left: 1px solid #ebebeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .AdminPage{
   display: flex;
   height: 100%;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import SideNav from './SideNav'
+import SideNav from './SideNav/SideNav'
 
 function AdminPage() {
   const [todos, setTodos] = useState([]);

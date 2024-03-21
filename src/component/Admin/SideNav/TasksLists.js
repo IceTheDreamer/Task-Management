@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react'
-import { db } from '../../firebase';
+import { db } from '../../../firebase';
 import { addDoc, collection, deleteDoc, getDocs, query, where, doc } from 'firebase/firestore/lite';
 import { Plus } from 'react-bootstrap-icons';
 import Modal from './Modal'
-import TodoForm from './TodoFrom';
+import TodoForm from '../TodoFrom';
 
 function TasksLists(props) {
     const [showModal, setShowModal] = useState(false)

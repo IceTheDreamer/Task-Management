@@ -5,7 +5,7 @@ function User() {
   return (
     <div className='User'>
         <div className="info">
-          <h1>Icy Joy C. Pe</h1>
+          <h1>Macy Greenfelder</h1>
           <p>Admin</p>
         </div>
         <div className='logo'>
