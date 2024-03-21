@@ -28,7 +28,7 @@ function LoginPage() {
           return (setRouteTo('/admin'));// Handle successful login response
         }
         else{
-          return (setRouteTo('/employee'));
+          setRouteTo(`/employee/${userName}`); 
         }
       } else {
         console.error('Login failed');

@@ -29,18 +29,15 @@ function AdminPage() {
     }, []);
     
     var datass = []
-
     const showTodo = () => {
       fetch('https://dummyjson.com/todos/user/5')
       .then(res => res.json())
       .then(data => {
           const todos = data.todos.map(todo => todo.todo);
-          datass.push(todos);
-          const taskList = [{ title: 'Pending Tasks', items: datass[0]}];
+          datass.push(todos)
       });
-      console.log(datass);
-      console.log(taskList);
     }
+    console.log(datass)
   return (
     <div className='AdminPage'>
         <div className='Side-nav'>
