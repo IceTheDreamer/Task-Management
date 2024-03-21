@@ -11,7 +11,7 @@ function App() {
       <Router>
         <Routes>
         <Route path='/' element={<LoginPage/>}/>
-          <Route path='/employee/:userName' element={<Employee/>}/>
+          <Route path='/employee/:data' element={<Employee/>}/>
           <Route path='/admin' element={<AdminPage />} />
         </Routes>
       </Router>

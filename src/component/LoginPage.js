@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { KeyFill, PersonCircle, PersonFill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
+import { userInApiData } from './UserFolder/UserData';
 
 
 function LoginPage() {
@@ -24,6 +25,7 @@ function LoginPage() {
       
       if (response.ok) {
         const data = await response.json();
+        userInApiData.push(data);
         if(userName === 'jissetts'){
           return (setRouteTo('/admin'));// Handle successful login response
         }

@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import DragNDrop from './DragNDrop'
-import { useParams } from 'react-router-dom'
+import { userInApiData } from '../UserFolder/UserData';
+import Header from './Header';
 
 function Employee() {
   const [todos, setTodos] = useState([]);
-  
-  const { userName } = useParams();
 
   useEffect(() => {
-    showTodo();
-  }, []);
+    if (userInApiData.length > 0) {
+      showTodo();
+    }
+  }, [userInApiData]);
   
   const showTodo = () => {
-    fetch('https://dummyjson.com/todos/user/5')
+    fetch(`https://dummyjson.com/todos/user/${userInApiData[0].id}`)
     .then(res => res.json())
     .then(data => {
         const todos = data.todos.map(todo => todo.todo);
@@ -24,16 +25,13 @@ function Employee() {
   if (todos.length === 0) {
     return <div>Loading todos...</div>;
   }
-
-  const todosLists = ['sad', 'sada']
   const data = [
     {title: 'Pending Tasks', items: todos}
   ]
-  console.log(data);
-  console.log(userName);
-
+  console.log(userInApiData[0].id);
   return (
     <div className='Employee'>
+      <Header></Header>
         <div className='Display-todos'>
             <header className='App-header'>
             <DragNDrop data={data}/>

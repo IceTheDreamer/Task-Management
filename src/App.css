@@ -74,10 +74,21 @@
 }
 .Employee{
   display:flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
+}
+.Employee .Header{
+  width: 100%;
+  background-color: #fff;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+}
+.Employee .Header .User{
+  width: 300px;
 }
 .AdminPage{
   display: flex;
@@ -105,11 +116,11 @@
   display: flex;
   justify-content: right;
 }
-.User .info h1{
+.info h1{
   font-size: 1.3rem;
   font-weight: bold;
 }
-.User .info p{
+.info p{
   font-size: 1.1rem;
   text-align: left;
 }
@@ -246,6 +257,7 @@
 }
 .TasksLists .list-of-tasks{
   width: 100%;
+  height: 400px;
   display: flex;
   flex-direction: column;
   gap: 10px;
