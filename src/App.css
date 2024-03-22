@@ -275,7 +275,8 @@
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .TasksLists .task-dnd-item{
   background-color: #f5f5f5;
@@ -303,19 +304,39 @@
 }
 .Display-todos{
   width: 80%;
-  margin-top: 5%;
   height: 90%;
 }
-.App-header {
+.all-todos {
   min-height: 50vh;
-  width: 100%;
+  width: 98%;
+  margin-top: 7%;
+  margin-left: 2%;
   /* flex-direction: column;
   align-items: center;
   justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: #000;
 }
-
+.search-box{
+  width: 96.5%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.search-box input{
+  border-radius: 10px;
+  padding: 1rem;
+  width: 25%;
+  margin: 1rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  font-size: 1.2rem;
+  border-bottom: 1px solid #a1a0a0;
+}
+.search-box .icon{
+  margin-left: -6%;
+  margin-top: .5%;
+}
 .drag-n-drop {
   padding: .5rem;
   display: grid;
@@ -323,6 +344,7 @@
   width: 100%;
   height: 100%;
   grid-template-columns: repeat(auto-fill, 300px);
+  grid-auto-flow: column;
   align-items: start;
   justify-content: center;
 }
@@ -371,17 +393,21 @@
   padding: .5rem;
   display: grid;
   gap: .5rem;
-  width: 60%;
+  width: 100%;
   height: 100%;
-  grid-template-columns: repeat(auto-fill, 300px);
-  align-items: start;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-rows: auto auto; /* Define two rows */
+  grid-auto-rows: 1fr; /* Let additional rows take up remaining space */
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 .admin-dnd-group {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 5px;
   padding: 1.1rem;
   height: 220px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;

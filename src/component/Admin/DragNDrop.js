@@ -4,8 +4,10 @@ import React, { useRef, useState } from 'react'
 
 function DragNDrop(props) {
     const users = props.userLists;
-    const tasks = props.onGoingTask;
-    const pending = props.pendingTasks;
+    const allTasks = props.allTasks;
+    console.log(allTasks[0].todos[0].todo)
+    ///const tasks = props.onGoingTask;
+    //const pending = props.pendingTasks;
     // const [list, setList] = useState(props.data);
     // const [dragging, setDragging] = useState(false);
   
@@ -92,8 +94,8 @@ function DragNDrop(props) {
     <div className='admin-drag-n-drop'>
       <div className='userProfile'>
         {users.map((user, index) =>{
-          const isTaskNA = pending[index] === 0;
-          const isBusy = isTaskNA ? false : true;
+         // const isTaskNA = pending[index] === 0;
+         // const isBusy = isTaskNA ? false : true;
         
           return (
             <div 
@@ -105,10 +107,12 @@ function DragNDrop(props) {
                 <div className={isBusy? 'sign busy':'sign vacant'}></div>
               </div>
               <div className='task-details'>
-                <p>Pending: {pending[index]}</p>
+              <p>Pending: 3</p>
+                {/* <p>Pending: {pending[index]}</p> */}
                 <p>Completed: 3</p>
               </div>
-              <p className='task-item'>Ongoing Task: <br /><span className='admin-dnd-item'>{tasks[index]}</span></p>
+              {/* <p className='task-item'>Ongoing Task: <br /><span className='admin-dnd-item'>{tasks[index]}</span></p> */}
+              <p className='task-item'>Pending Tasks: <br /><span className='admin-dnd-item'>{allTasks[0].todos[0].todo}</span></p>
             </div>
           );
         })}

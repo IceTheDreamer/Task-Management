@@ -3,7 +3,6 @@ import { KeyFill, PersonCircle, PersonFill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import { userInApiData } from './UserFolder/UserData';
 
-
 function LoginPage() {
   const [userName, setUserName] = useState('')
   const [passWord, setPassword] = useState('')

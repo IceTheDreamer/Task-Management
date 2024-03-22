@@ -32,6 +32,7 @@ function Employee() {
     {title: 'Pending Tasks', items: pendingTasks.map(todo => todo.todo)},
     {title: 'Completed Tasks', items: completedTasks.map(todo => todo.todo)}
   ]
+  
   return (
     <div className='Employee'>
       <Header name={userInApiData[0].firstName + " " + userInApiData[0].lastName}></Header>
