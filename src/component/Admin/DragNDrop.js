@@ -3,9 +3,10 @@ import React, { useRef, useState } from 'react'
 // import { addDoc, collection, deleteDoc, getDocs, query, where, doc } from 'firebase/firestore/lite';
 
 function DragNDrop(props) {
+  
     const users = props.userLists;
     const allTasks = props.allTasks;
-    console.log(allTasks[0].todos[0].todo)
+   // console.log(allTasks[0].todos[0].todo)
     ///const tasks = props.onGoingTask;
     //const pending = props.pendingTasks;
     // const [list, setList] = useState(props.data);
@@ -94,9 +95,12 @@ function DragNDrop(props) {
     <div className='admin-drag-n-drop'>
       <div className='userProfile'>
         {users.map((user, index) =>{
-         // const isTaskNA = pending[index] === 0;
-         // const isBusy = isTaskNA ? false : true;
-        
+         const userTasks = allTasks[index].todos;
+          const completedTasks = userTasks.filter(task => task.completed === true);
+          const pendingTasks = userTasks.filter(task => task.completed === false);
+          const isTaskNA = pendingTasks.length === 0;
+          const isBusy = isTaskNA ? false : true;
+
           return (
             <div 
               key={index} 
@@ -107,12 +111,21 @@ function DragNDrop(props) {
                 <div className={isBusy? 'sign busy':'sign vacant'}></div>
               </div>
               <div className='task-details'>
-              <p>Pending: 3</p>
+              <p>Pending: {pendingTasks.length}</p>
                 {/* <p>Pending: {pending[index]}</p> */}
-                <p>Completed: 3</p>
+                <p>Completed: {completedTasks.length}</p>
               </div>
               {/* <p className='task-item'>Ongoing Task: <br /><span className='admin-dnd-item'>{tasks[index]}</span></p> */}
-              <p className='task-item'>Pending Tasks: <br /><span className='admin-dnd-item'>{allTasks[0].todos[0].todo}</span></p>
+              <p className='task-item'>Pending Tasks: <br />
+              {allTasks[index].todos && allTasks[index].todos.length > 0 && (
+                allTasks[index].todos
+                  .filter(task => !task.completed) // Filter out completed tasks
+                  .map(task => (
+                    <span key={task.id} className='admin-dnd-item'>{task.todo}<br /></span>
+                  ))
+              )}
+              <span className='admin-dnd-item'></span>
+            </p>
             </div>
           );
         })}

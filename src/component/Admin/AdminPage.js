@@ -8,6 +8,8 @@ function AdminPage() {
   const [allUsers, setAllUsers] = useState([]);
   const [allUsersId, setAllUsersId] = useState([]);
   const [usersTodoss, setUsersTodos] = useState([]);
+  const [searchInput, setSearchInput] = useState('');
+  const [filteredUsers, setFilteredUsers] = useState([]);
 
   useEffect(() => {
     showAllTodo();
@@ -50,7 +52,8 @@ function AdminPage() {
         .catch(error => console.error('Error fetching todos:', error));
     })
     .catch(error => console.error('Error fetching users:', error));
-}
+  }
+
   const showAllTodo = () => {
     fetch('https://dummyjson.com/todos')
     .then(res => res.json())
@@ -61,6 +64,16 @@ function AdminPage() {
     .catch(error => console.error('Error fetching todos:', error));
   }
 
+  const handleSearchInputChange = (event) => {
+    setSearchInput(event.target.value);
+    filterUsers(event.target.value);
+  }
+
+  const filterUsers = (input) => {
+    const filtered = allUsers.filter(user => user.toLowerCase().includes(input.toLowerCase()));
+    setFilteredUsers(filtered);
+  }
+
   const taskList = [
     {title: 'Pending Tasks', items: todos}
   ]
@@ -68,10 +81,8 @@ function AdminPage() {
     return <div>Loading users...</div>;
   }
 
-  
-  const userList = allUsers;
-  // const completedTasks = usersTodoss.filter(todo => todo.completed);
-  // const pendingTasks = usersTodoss.filter(todo => !todo.completed);
+  const userList = searchInput ? filteredUsers : allUsers;
+
   if(usersTodoss.length === 0){
     return <div>Loading...</div>
   }
@@ -84,15 +95,11 @@ function AdminPage() {
         <div className='Display-todos'>
             <div className='all-todos'>
               <div className='search-box'>
-                <input placeholder='Search'></input><Search className='icon'/>
+                <input placeholder='Search' value={searchInput} onChange={handleSearchInputChange}></input><Search className='icon'/>
               </div>
-              {/* <DragNDrop userLists={userList} pendingTasks={pendingTasks}/> */}
               <DragNDrop userLists={userList} allTasks={allTasks}/>
             </div>
         </div>
-        {/* {users.map((userrr, index) =>(
-          <div key={index}><h1>{userrr}</h1></div>
-        ))} */}
     </div>
   )
 }

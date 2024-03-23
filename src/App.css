@@ -309,7 +309,7 @@
 .all-todos {
   min-height: 50vh;
   width: 98%;
-  margin-top: 7%;
+  margin-top: 2%;
   margin-left: 2%;
   /* flex-direction: column;
   align-items: center;
@@ -399,14 +399,14 @@
   grid-template-rows: auto auto; /* Define two rows */
   grid-auto-rows: 1fr; /* Let additional rows take up remaining space */
   grid-auto-flow: column;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
 }
 .admin-dnd-group {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 5px;
   padding: 1.1rem;
-  height: 220px;
+  height: 260px;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -414,6 +414,9 @@
 }
 .admin-dnd-group .task-item{
   line-height: 2;
+  height: 200px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .admin-dnd-item {
   display: flex;
