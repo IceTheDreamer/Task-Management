@@ -34,6 +34,7 @@ function DragNDrop({data}) {
 
     const handleDragEnd = () => {
         console.log('Ending drag...', dragItem.current.item)
+        addTodo(dragItem.current.item)
         setDragging(false)
         dragNode.current.removeEventListener('dragend', handleDragEnd)
         dragItem.current = null;
@@ -45,6 +46,19 @@ function DragNDrop({data}) {
             return 'current dnd-item'
         }
         return 'dnd-item'
+    }
+    const addTodo = (item) => {
+      fetch('https://dummyjson.com/todos/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          todo: item,
+          completed: false,
+          userId: 3,
+        })
+      })
+      .then(res => res.json())
+      .then(console.log);
     }
   return (
     <div className='drag-n-drop'>

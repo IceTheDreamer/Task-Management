@@ -25,7 +25,7 @@ function LoginPage() {
       if (response.ok) {
         const data = await response.json();
         userInApiData.push(data);
-        if(userName === 'jissetts'){
+        if(userName === 'emilys'){
           return (setRouteTo('/admin'));// Handle successful login response
         }
         else{
